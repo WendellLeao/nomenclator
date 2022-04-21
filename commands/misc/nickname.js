@@ -36,7 +36,7 @@ module.exports = class NicknameCommand extends Commando.Command {
         }
 
         if (member.id == message.guild.ownerID) {
-            message.reply('I have no permission to change the name of the owner :().');
+            message.reply('I have no permission to change the name of the owner :(');
 
             return;
         }
