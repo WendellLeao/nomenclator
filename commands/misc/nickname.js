@@ -3,20 +3,20 @@ const Commando = require('discord.js-commando')
 module.exports = class NicknameCommand extends Commando.Command {
     constructor(client) {
         super(client, {
-            name: 'nick',
+            name: 'nome',
             group: 'misc',
-            memberName: 'nick',
+            memberName: 'nome',
             userPermissions: [
                 'MANAGE_NICKNAMES',
                 'CHANGE_NICKNAME',
-                'MANAGE_MESSAGES'
+                'MANAGE_MESSAGES',
             ],
             clientPermissions: [
                 'MANAGE_NICKNAMES',
                 'CHANGE_NICKNAME',
                 'MANAGE_MESSAGES'
             ],
-            description: 'Changes the nickname of a user',
+            description: 'Muda o nome de algum corno',
             argsType: 'multiple'
         })
     }
@@ -24,25 +24,27 @@ module.exports = class NicknameCommand extends Commando.Command {
     run = (message, args) => {
         const target = message.mentions.users.first()
         const member = message.guild.members.cache.get(target.id)
-
+        
         args.shift()
     
         const nickname = args.join(' ')
 
         if(nickname == null || nickname == ""){
-            message.reply('type the new name after the mention')
-
-            return;
+            return message.reply('digita o novo nome depois da menção BURRO').then(msg => {
+                msg.delete({ timeout: 10000 })
+            })
         }
 
         if (member.id == message.guild.ownerID) {
-            message.reply('I have no permission to change the name of the owner :(');
-
-            return;
+            return message.reply('infelizmente não consigo mudar o nome desse desgraçado aí.').then(msg => {
+                msg.delete({ timeout: 10000 })
+            })
         }
 
         member.setNickname(nickname)
 
-        message.reply('you changed the nickname!')
+        message.reply('parabéns você mudou o nome do corno para "' + nickname + '"').then(msg => {
+            msg.delete({ timeout: 10000 })
+        })
     }
 }
