@@ -30,21 +30,21 @@ module.exports = class NicknameCommand extends Commando.Command {
         const nickname = args.join(' ')
 
         if(nickname == null || nickname == ""){
-            return message.reply('digita o novo nome depois da menção BURRO').then(msg => {
-                msg.delete({ timeout: 10000 })
+            return message.reply('digite o novo nome depois da menção BURRO').then(msg => {
+                msg.delete({ timeout: 5000 })
             })
         }
 
         if (member.id == message.guild.ownerID) {
             return message.reply('infelizmente não consigo mudar o nome desse desgraçado aí.').then(msg => {
-                msg.delete({ timeout: 10000 })
+                msg.delete({ timeout: 5000 })
             })
         }
 
         member.setNickname(nickname)
 
         message.reply('parabéns você mudou o nome do corno para "' + nickname + '"').then(msg => {
-            msg.delete({ timeout: 10000 })
+            msg.delete({ timeout: 5000 })
         })
     }
 }
