@@ -6,16 +6,6 @@ module.exports = class NicknameCommand extends Commando.Command {
             name: 'nome',
             group: 'misc',
             memberName: 'nome',
-            userPermissions: [
-                'MANAGE_NICKNAMES',
-                'CHANGE_NICKNAME',
-                'MANAGE_MESSAGES',
-            ],
-            clientPermissions: [
-                'MANAGE_NICKNAMES',
-                'CHANGE_NICKNAME',
-                'MANAGE_MESSAGES'
-            ],
             description: 'Muda o nome de algum corno',
             argsType: 'multiple'
         })
