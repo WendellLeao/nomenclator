@@ -3,11 +3,11 @@ const Commando = require('discord.js-commando')
 module.exports = class NicknameCommand extends Commando.Command {
     constructor(client) {
         super(client, {
-            name: 'nome',
-            group: 'misc',
-            memberName: 'nome',
-            description: 'Muda o nome de algum corno',
-            argsType: 'multiple'
+            name: "nome",
+            group: "misc",
+            memberName: "nome",
+            description: "Change the user's name",
+            argsType: "multiple"
         })
     }
 
@@ -21,20 +21,20 @@ module.exports = class NicknameCommand extends Commando.Command {
         const nickname = args.join(' ')
         
         if(nickname == null || nickname == ""){
-            return message.reply('coloca o novo nome depois da menção **BURRO**').then(msg => {
+            return message.reply("Type the new name **after** the mention").then(msg => {
                 msg.delete({ timeout: 5000 })
             })
         }
 
         if (member.id == message.guild.ownerID) {
-            return message.reply('infelizmente não consigo mudar o nome desse desgraçado aí.').then(msg => {
+            return message.reply("Unfortunately it's not possible to change the server owner's name").then(msg => {
                 msg.delete({ timeout: 5000 })
             })
         }
 
         member.setNickname(nickname)
 
-        message.reply('parabéns você mudou o nome do corno para **' + nickname + '**').then(msg => {
+        message.reply("Awesome, you have changed the name to **" + nickname + "**").then(msg => {
             msg.delete({ timeout: 5000 })
         })
     }
